@@ -6,44 +6,23 @@ Implementation of Argumentative LLMs based on the ArgLLM paper (arXiv:2405.02079
 
 Instead of asking an LLM directly "True or False?", generate structured arguments for and against a claim, then compute a **gradual strength score** through structured argumentation semantics.
 
-```mermaid
-flowchart TB
-    subgraph Input[" "]
-        claim["📝 Claim"]
-    end
-
-    subgraph Arguments[" "]
-        subgraph Support["SUPPORTS"]
-            s1["Argument A\nτ=0.8"]
-            s2["Argument B\nτ=0.6"]
-        end
-        subgraph Attack["ATTACKS"]
-            a1["Argument C\nτ=0.7"]
-            a2["Argument D\nτ=0.5"]
-        end
-    end
-
-    subgraph Propagation["Strength Propagation (DF-QuAD)"]
-        math["F() → C() → σ()"]
-    end
-
-    subgraph Output[" "]
-        result["✅ TRUE / ❌ FALSE\nStrength: 0.73"]
-        audit["📋 Auditable Debate\nwith Citations"]
-    end
-
-    claim --> s1
-    claim --> s2
-    claim --> a1
-    claim --> a2
-
-    s1 --> math
-    s2 --> math
-    a1 --> math
-    a2 --> math
-
-    math --> result
-    math --> audit
+```
+                          ┌─────────────────────┐
+                          │      📝 CLAIM       │
+                          └──────────┬──────────┘
+                                     │
+           ┌─────────────────────────┼─────────────────────────┐
+           │                         │                         │
+           ▼                         ▼                         ▼
+┌─────────────────────┐   ┌─────────────────────┐   ┌─────────────────────┐
+│      SUPPORTS       │   │       OUTPUT        │   │      ATTACKS        │
+├─────────────────────┤   ├─────────────────────┤   ├─────────────────────┤
+│ Arg A  [τ=0.8] ─────┼───┤  TRUE / FALSE       │   ├─────▶ Arg C [τ=0.7] │
+│ Arg B  [τ=0.6] ─────┼───┤  Strength: 0.73     │   ├─────▶ Arg D [τ=0.5] │
+│                     │   │                     │   │                     │
+│  F() = 1-∏(1-vi)    │   │  📋 Auditable       │   │  F() = 1-∏(1-vi)    │
+│  σ = C(τ,va,vs)     │   │  Debate + Citations │   │  σ = C(τ,va,vs)     │
+└─────────────────────┘   └─────────────────────┘   └─────────────────────┘
 ```
 
 ## Installation
