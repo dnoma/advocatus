@@ -7,9 +7,9 @@ Implementation of Argumentative LLMs based on the ArgLLM paper (arXiv:2405.02079
 Instead of asking an LLM directly "True or False?", generate structured arguments for and against a claim, then compute a **gradual strength score** through structured argumentation semantics.
 
 ```
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                              📝 CLAIM                                       │
-└─────────────────────────────────────────────────────────────────────────────┘
+    ┌─────────────────────────────────────────────────────────────────────────────┐
+    │                                   📝 CLAIM                                  │
+    └─────────────────────────────────────────────────────────────────────────────┘
                                            │
               ┌────────────────────────────┼────────────────────────────┐
               │                            │                            │
@@ -17,8 +17,8 @@ Instead of asking an LLM directly "True or False?", generate structured argument
 ┌─────────────────────────┐    ┌─────────────────────────┐    ┌─────────────────────────┐
 │        SUPPORTS         │    │         OUTPUT          │    │         ATTACKS         │
 ├─────────────────────────┤    ├─────────────────────────┤    ├─────────────────────────┤
-│  Arg A    [τ=0.8]       │    │                         │    │       Arg C [τ=0.7]     │
-│  Arg B    [τ=0.6]       │    │  TRUE / FALSE           │    │       Arg D [τ=0.5]     │
+│  Arg A    [τ=0.8]       │    │                         │    │  Arg C [τ=0.7]          │
+│  Arg B    [τ=0.6]       │    │  TRUE / FALSE           │    │  Arg D [τ=0.5]          │
 │                         │    │  Strength: 0.73         │    │                         │
 │  F() = 1-∏(1-vi)        │    │                         │    │  F() = 1-∏(1-vi)        │
 │  σ = C(τ,va,vs)         │    │  📋 Auditable Debate    │    │  σ = C(τ,va,vs)         │
