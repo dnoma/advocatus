@@ -1,6 +1,6 @@
 # Advocatus
 
-Argumentative LLMs via Quantitative Bipolar Argumentation
+### Argumentative LLMs via Quantitative Bipolar Argumentation
 
 Implementation of Argumentative LLMs based on the ArgLLM paper (arXiv:2405.02079). This project implements claim verification using **Quantitative Bipolar Argumentation Frameworks (QBAFs)**.
 
