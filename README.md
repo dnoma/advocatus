@@ -1,4 +1,4 @@
-# Contestable: Argumentative LLMs via Quantitative Bipolar Argumentation
+# Advocatus: Argumentative LLMs via Quantitative Bipolar Argumentation
 
 Implementation of Argumentative LLMs based on the ArgLLM paper (arXiv:2405.02079). This project implements claim verification using **Quantitative Bipolar Argumentation Frameworks (QBAFs)**.
 
@@ -19,7 +19,7 @@ pip install -e ".[dev]"
 ## Project Structure
 
 ```
-contestable/
+advocatus/
 ├── src/
 │   ├── frameworks/
 │   │   ├── baf.py              # BAF: ⟨A, R−, R+⟩ (arguments + attack/support relations)
